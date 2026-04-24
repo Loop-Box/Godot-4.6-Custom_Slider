@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c4uxp644r8n3s"]
+
+[ext_resource type="Texture2D" uid="uid://mr51yh8ocdcd" path="res://Custom_Shape_Slider/Custom_Slider/Texture.tres" id="1_j6dy3"]
+[ext_resource type="Script" uid="uid://dcw5y7h6c1hkc" path="res://Custom_Shape_Slider/Custom_Slider/Custom_Slider.gd" id="1_ml6i6"]
+
+[sub_resource type="Gradient" id="Gradient_u8gxs"]
+offsets = PackedFloat32Array(0.47111112, 0.49555555, 0.69777775, 0.75185186)
+colors = PackedColorArray(0, 0, 0, 1, 0.9019608, 0.9019608, 0.9019608, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_05coj"]
+gradient = SubResource("Gradient_u8gxs")
+width = 40
+height = 40
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="BG" type="Line2D" unique_id=1234658385]
+width = 28.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 16
+antialiased = true
+
+[node name="Custom_Slider" type="Line2D" parent="." unique_id=706747665 node_paths=PackedStringArray("BG", "Pointer")]
+points = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32, 0, 64, 128, 64)
+width = 16.0
+default_color = Color(0.6392157, 1, 0.41568628, 1)
+texture = ExtResource("1_j6dy3")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("1_ml6i6")
+BG = NodePath("..")
+Pointer = NodePath("Point")
+Distance_To_Move = 32.0
+
+[node name="Point" type="Sprite2D" parent="Custom_Slider" unique_id=1015364076]
+texture = SubResource("GradientTexture2D_05coj")
